@@ -1,0 +1,72 @@
+<h5 class="center-align">Your job postings</h5>
+
+<div class="messages right-align">
+    {{#if success_job}}
+    <div class="success">
+        {{success_job}}
+    </div>
+    {{/if}}
+    {{#if success_edit}}
+    <div class="success">
+        {{success_edit}}
+    </div>
+    {{/if}}
+</div>
+
+<a class="waves-effect waves-light btn-large add-btn" href="/admin/create">Add new job</a>
+
+{{#each items}}
+<div class="admin-job-card row">
+    <div class="job-card row">
+        <div class="col xl2 l6 push-s9 s3">
+            <div class="logo"><img src="{{this.logo}}" alt="">
+            </div>
+        </div>
+        <div class="col xl4 l6 pull-s3 s9">
+            <div class="job-description">
+                <div class="company-name">{{this.company_name}}</div>
+                <div class="job-name">{{this.job_name}}</div>
+                <div class="work-description">
+                    {{#if (lookup ../days @key)}}
+                    <span>{{lookup ../days @key}}d ago</span>
+                    {{else}}
+                    <span>Today</span>
+                    {{/if}}
+                    <span>•</span>
+                    <span>{{this.working_hours}}</span>
+                    <span>•</span>
+                    <span>{{this.country}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col xl6 l12 m12">
+            <div class="technologies-admin">
+                <div class="technology-admin">{{level}}</div>
+                <div class="technology-admin">{{role}}</div>
+                {{#each technologies}}
+                <div class="technology-admin">{{this}}</div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+    <form class="delete" method="POST" action="/admin/delete/{{this._id}}?_method=DELETE"><button
+            class="right waves-effect waves-light btn pink darken-1 delete-btn">Delete</button>
+
+
+    </form>
+    <a href="/admin/edit/{{this._id}}" class="right waves-effect waves-light btn edit-btn purple darken-2">Edit</a>
+</div>
+
+{{/each}}
+
+
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <h4>Confirm deletion</h4>
+        <p id="delete"></p>
+    </div>
+    <div class="modal-footer">
+        <button id="confirm" class="waves-effect waves-green btn-flat">Yes</button>
+        <button class="modal-close waves-effect waves-green btn-flat">No</button>
+    </div>
+</div>

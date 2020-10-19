@@ -1,0 +1,65 @@
+<h3 class="center-align">Register</h3>
+
+
+<div class="row">
+
+    <form class="col xl6 s12 offset-xl3" method="POST" action="/register">
+        <div class="messages">
+            {{#if bademail}}
+            <div class="error">
+                {{bademail}}
+            </div>
+            {{/if}}
+            {{#if badpassword}}
+            <div class="error">
+                {{badpassword}}
+            </div>
+            {{/if}}
+            {{#if message}}
+            <div class="error">
+                {{message}}
+            </div>
+            {{/if}}
+        </div>
+        <div class="input-field">
+            <label for="firstNameInput">First Name:</label>
+            <input name="firstName" type="text" id="firstNameInput" ​maxlength="4" class="validate"
+                placeholder="Must contain min 3 and max 15 alphanumeric characters" required>
+            <span class="helper-text" data-error="Enter valid first name" data-success=""></span>
+        </div>
+
+        <div class="input-field">
+            <input name="lastName" type="text" id="lastNameInput" class="validate"
+                placeholder="Must contain min 3 and max 15 alphanumeric characters" required>
+            <label for="lastNameInput">Last Name:</label>
+            <span class="helper-text" data-error="Enter valid last name" data-success=""></span>
+        </div>
+
+        <div class="input-field">
+            <label for="emailInput">Email address:</label>
+            <input name="email" type="email" id="emailInput" class="validate" required>
+            <label for="emailInput">Email address:</label>
+            <span class="helper-text" data-error="Enter valid email" data-success=""></span>
+        </div>
+
+        <div class="input-field">
+            <input name="password" type="password" id="passwordInput" class="validate"
+                placeholder="Password must be minimum 5 and maximum 20 characters" required>
+            <label for="passwordInput">Password:</label>
+            <span class="helper-text" data-error="Enter valid password" data-success=""></span>
+        </div>
+
+        <div class="input-field">
+            <input name="confirmPassword" type="password" id="confirmPasswordInput" class="validate" required>
+            <label for="confirmPasswordInput">Confirm Password:</label>
+            <span class="helper-text" data-error="Enter valid password" data-success=""></span>
+        </div>
+
+        <button type="submit" class="btn-large submit-btn waves-effect waves-light">Register</button>
+        <div class="center-align">
+            <p>Already registered? <a href="/login">Login here!</a></p>
+        </div>
+
+    </form>
+
+</div>

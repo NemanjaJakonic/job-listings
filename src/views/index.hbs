@@ -1,0 +1,46 @@
+<div class="filter-wrapper valign-wrapper">
+    <div class="filter"></div>
+    <div class='clear'>Clear</div>
+</div>
+<h5 class="center-align">All job postings</h5>
+
+{{#each Jobs}}
+<div class="job-card row" data-filter={{level}},{{role}},{{technologies}}>
+    <div class="col xl2 l6 push-s9 s3">
+        <div class="logo"><a href="/job/{{this._id}}"><img src="{{this.logo}}" alt=""></a></div>
+    </div>
+    <div class="col xl4 l6 pull-s3 s9">
+        <div class="job-description">
+            <div class="company-name"><a href="/job/{{this._id}}">{{this.company_name}}</a>
+                {{#if (lookup ../newJob @key)}}<span>NEW!</span>{{/if}}</div>
+            <div class="job-name">{{this.job_name}}</div>
+            <div class="work-description">
+                {{#if (lookup ../days @key)}}
+                <span>{{lookup ../days @key}}d ago</span>
+                {{else}}
+                <span>Today</span>
+                {{/if}}
+                <span>•</span>
+                <span>{{this.working_hours}}</span>
+                <span>•</span>
+                <span>{{this.country}}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col xl6 l12 s12">
+        <div class="technologies">
+            <div class="technology">{{level}}</div>
+            <div class="technology">{{role}}</div>
+            {{#each technologies}}
+
+            <div class="technology">{{this}}</div>
+            {{/each}}
+        </div>
+    </div>
+</div>
+{{!-- <blockquote class="right">
+    posted by {{this.posted_by_name}}
+</blockquote> --}}
+
+{{/each}}

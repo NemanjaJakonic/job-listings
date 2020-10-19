@@ -1,0 +1,406 @@
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@500;700&display=swap");
+
+/* * {
+  outline: 1px solid red;
+} */
+
+body {
+  background-color: hsl(180, 52%, 96%);
+}
+
+main{
+  min-height: 75vh;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+
+.login-wrapper{
+    display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-field .prefix {
+  width: fit-content;
+}
+
+label {
+  width: unset !important;
+}
+
+.checkbox{
+  display: inline!important;
+}
+
+.error {
+  padding: 15px 0;
+  color: red;
+}
+
+.success {
+  color: green;
+}
+
+.wrapper {
+  width: 80%;
+  margin: 0 auto;
+  font-family: "Spartan", sans-serif;
+}
+
+.job-card {
+  background-color: white;
+  width: 100%;
+  min-height: 150px;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  -webkit-box-shadow: 0px 0px 30px 0px rgba(46,74,117,1);
+  -moz-box-shadow: 0px 0px 30px 0px rgba(46,74,117,1);
+  box-shadow: 0px 0px 15px 0px hsl(180, 29%, 50%);
+  border-left:4px solid white;
+  border-radius:3px;
+  transition: all 0.2s ease-in;
+  
+}
+.job-card:hover{
+  border-left: 4px solid hsl(180, 29%, 50%);
+  transform: scale(1.01);
+}
+.admin-job-card .job-card{
+  pointer-events: none;
+}
+nav {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.user {
+  font-weight: 700;
+}
+
+.logo {
+  margin: 0 auto;
+  max-width: 150px;
+  max-height: 150px;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.job-description {
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center; */
+  margin-left: 20px;
+}
+
+.company-name {
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.company-name a {
+  text-decoration: none;
+  color: hsl(180, 29%, 50%);
+  vertical-align: text-top;
+}
+
+.company-name span {
+  margin-left: 3px;
+  padding: 3px 5px;
+  color: white;
+  font-weight: 500;
+  font-size: 10px;
+  background-color: hsl(180, 29%, 50%);
+  border-radius: 10px;
+}
+
+.job-name {
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.work-description {
+  display: flex;
+  color: hsl(180, 8%, 52%);
+}
+
+.work-description span {
+  padding-right: 10px;
+}
+
+.technologies {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  width: 100%;
+}
+.technologies-admin {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  width: 100%;
+}
+.technology {
+  background-color: hsl(180, 31%, 95%);
+  padding: 6px;
+  margin: 0 10px;
+  color: hsl(180, 29%, 50%);
+  font-weight: 700;
+  border-radius: 5px;
+  transition: all 0.5s ease;
+}
+.technology-admin {
+  background-color: hsl(180, 31%, 95%);
+  padding: 6px;
+  margin: 0 10px;
+  color: hsl(180, 29%, 50%);
+  font-weight: 700;
+  border-radius: 5px;
+  transition: all 0.5s ease;
+}
+
+.technologies .technology:hover {
+  cursor: pointer;
+  background-color: hsl(180, 29%, 50%);
+  color: white;
+}
+
+h1,
+h3,
+h4,h5 {
+  color: hsl(180, 29%, 50%);
+}
+
+h5{
+  margin-top: 50px;
+}
+
+.messages {
+  height: 50px;
+}
+
+.header {
+  height: 150px;
+  background-image: url("/img/bg-header-desktop.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: hsl(180, 29%, 50%);
+  margin-bottom: 20px;
+}
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  height: 100px;
+  background-image: url("/img/bg-header-desktop.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: hsl(180, 29%, 50%);
+  margin-top: 70px;
+  color: white;
+  font-weight: 700;
+  /* font-size: 16px; */
+}
+footer i{
+  vertical-align: middle;
+}
+
+.edit-btn {
+  margin-right: 10px;
+}
+
+.sidenav {
+  background-color: hsl(180, 52%, 96%);
+}
+
+.sidenav .user {
+  color: hsl(180, 29%, 50%);
+}
+
+.sidenav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.header h5 {
+  text-transform: uppercase;
+}
+
+.filter-wrapper {
+  min-height: 60px;
+  margin-top: -50px;
+  border-radius: 10px;
+  background-color: white;
+  width: 100%;
+  transition: all 0.5s ease;
+  position: relative;
+  padding: 10px;
+}
+
+.filter{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 85%;
+}
+
+.clear {
+  display: none;
+  position: absolute;
+  right: 20px;
+  color: hsl(180, 29%, 50%);
+  font-weight: 700;
+}
+
+.clear:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.filter .technology {
+  display: inline-block;
+  height: fit-content;
+  margin-right: 0;
+  margin-bottom: 5px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.filter i {
+  vertical-align: bottom;
+  background-color: hsl(180, 29%, 50%);
+  color: white;
+  padding: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.filter i:hover {
+  background-color: hsl(180, 14%, 20%);
+  cursor: pointer;
+}
+
+ul.technologies-list {
+columns: 3;
+}
+
+.submit-btn{
+  margin: 40px auto;
+  /* display: block; */
+  width: 100%;
+}
+
+.add-btn{
+  margin-bottom: 30px;
+}
+.add-btn a{
+  color: white;
+  display: block;
+}
+
+/* MEDIA QUERIES */
+
+@media only screen and (min-width: 1200px) {
+  .job-card {
+    display: flex;
+    align-items: center;
+  }
+  .job-card .technology {
+    margin-left: unset;
+    margin-bottom: 10px;
+  }
+  .job-card .technology-admin {
+    margin-left: unset;
+    margin-bottom: 10px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .technologies {
+    justify-content: flex-start;
+    padding-bottom: 20px;
+  }
+  .technologies-admin {
+    justify-content: flex-start;
+    padding-bottom: 20px;
+  }
+  
+}
+
+@media only screen and (max-width: 600px) {
+  .job-card {
+    padding: 10px;
+  }
+  .filter-wrapper{
+    padding: 5px;
+  }
+  .logo {
+    height: 60px;
+  }
+
+  .work-description {
+    border-bottom: 1px dotted hsl(180, 8%, 52%);
+    padding-bottom: 15px;
+  }
+
+  .technologies {
+    justify-content: flex-start;
+    padding-top: 10px;
+    padding-bottom: 5px;
+  }
+  .technologies-admin {
+    justify-content: flex-start;
+    padding-top: 10px;
+    padding-bottom: 5px;
+  }
+
+  .job-card .technology {
+    margin-right: 5px;
+    margin-left: unset;
+    margin-bottom: 5px;
+  }
+  .job-card .technology-admin {
+    margin-right: 5px;
+    margin-left: unset;
+    margin-bottom: 5px;
+  }
+
+  .work-description {
+    justify-content: unset;
+    max-width: unset;
+  }
+
+  .work-description span {
+    padding-right: 5px;
+  }
+
+  .job-description {
+    margin-left: unset;
+  }
+
+  .add-btn{
+    display: block;
+    width: 100%;
+  }
+ 
+  .clear{
+    right: 10px;
+    bottom: -25px;
+  }
+  .filter{
+    width: 100%;
+  }
+  .header{
+    height: 100px;
+  }
+}

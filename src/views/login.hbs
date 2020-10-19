@@ -1,0 +1,44 @@
+<h3 class="center-align">Login</h3>
+<div class="row">
+    <form class="col xl6 s12 offset-xl3" method="POST" action="/login">
+        <div class="messages">
+            {{#if messages}}
+            <div class="success">
+                {{messages}}
+            </div>
+            {{/if}}
+            {{#if success}}
+            <div class="success">
+                {{success.message}}
+            </div>
+            {{/if}}
+            {{#if invalid_password}}
+            <div class="error">
+                {{invalid_password}}
+            </div>
+            {{/if}}
+            {{#if invalid_email}}
+            <div class="error">
+                {{invalid_email}}
+            </div>
+            {{/if}}
+        </div>
+        <div class="input-field">
+            <i class="material-icons prefix">email</i>
+            <input name="email" type="email" id="loginInputEmail" class="validate" required>
+            <label for="loginInputEmail">Email address</label>
+            <span class="helper-text" data-error="Enter valid email" data-success=""></span>
+        </div>
+        <div class="input-field">
+            <i class="material-icons prefix">vpn_key</i>
+            <input name="password" type="password" id="loginInputPassword" class="validate" required>
+            <label for="loginInputPassword">Password</label>
+            <span class="helper-text" data-error="Enter valid password" data-success=""></span>
+        </div>
+        <button type="submit" class="btn-large submit-btn waves-effect waves-light">Login</button>
+        <div class="center-align">
+            <p>Not registered? <a href="/register">Register here!</a> </p>
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,125 @@
+<a class="right btn btn-primary btn-lg active" href="/admin">Back to Admin</a>
+
+<div class="row">
+    <form method="POST" action="/admin/edit/{{item._id}}?_method=PUT" enctype="multipart/form-data"
+        class="col xl6 s12 offset-xl3">
+        <h4 class="center-align">Edit job post</h4>
+        <div class="messages">
+            {{#if error}}
+            <div class="error">
+                {{error}}
+            </div>
+            {{/if}}
+            {{#if success_edit}}
+            <div class="error">
+                {{success_edit}}
+            </div>
+            {{/if}}
+        </div>
+
+        <div class="input-field">
+            <label for="company_name">Company Name:</label>
+            <input name="company_name" type="text" id="company_name" ​maxlength="4" class="validate"
+                value="{{item.company_name}}" required>
+            <span class="helper-text" data-error="Enter valid company name" data-success=""></span>
+        </div>
+        <div class="logo"><img src="{{item.logo}}" alt=""></div>
+        <input type="hidden" name="logo" value="{{item.logo}}">
+        <div class="file-field input-field">
+            <div class="btn">
+                <span>Logo</span>
+                <input type="file" name='image'>
+
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text" placeholder="Upload company logo">
+                <span class="helper-text" data-error="Enter valid company name" data-success=""></span>
+            </div>
+        </div>
+
+        <div class="input-field">
+            <label for="job_name">Job Name</label>
+            <input name="job_name" type="text" id="job_name" ​maxlength="4" class="validate" value="{{item.job_name}}"
+                required>
+            <span class="helper-text" data-error="Enter valid job name" data-success=""></span>
+        </div>
+
+        <label for="level">Choose level:</label>
+        <select name="level" required class="validate">
+            {{#selected item.level}}
+            <option value="Junior">Junior</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Senior">Senior</option>
+            {{/selected}}
+        </select>
+        <span class="helper-text" data-error="Enter valid job description" data-success=""></span>
+        <label for="role">Choose role:</label>
+        <select name="role" required class="validate">
+            {{#selected item.role}}
+            <option value="Frontend">Frontend</option>
+            <option value="Backend">Backend</option>
+            <option value="Fullstack">Fullstack</option>
+            {{/selected}}
+        </select>
+        <span class="helper-text" data-error="Enter valid job description" data-success=""></span>
+
+        <div class="input-field">
+            <label for="job_description">Job Description</label>
+            <textarea id="job_description" name="job_description" class="materialize-textarea validate"
+                required>{{item.job_description}}</textarea>
+            <span class="helper-text" data-error="Enter valid job description" data-success=""></span>
+        </div>
+
+        {{#checked item.working_hours}}
+        <label for="working_hours">Choose working hours:</label>
+        <p>
+            <label>
+                <input class="with-gap" name="working_hours" type="radio" value="Full Time" />
+                <span>Full Time</span>
+            </label>
+        </p>
+        <p>
+            <label>
+                <input class="with-gap" name="working_hours" type="radio" value="Part Time" />
+                <span>Part Time</span>
+            </label>
+        </p>
+        <p>
+            <label>
+                <input class="with-gap" name="working_hours" type="radio" value="Contract" />
+                <span>Contract</span>
+            </label>
+        </p>
+        {{/checked}}
+
+        <div class="input-field">
+            <select name="country">
+                {{#selected item.country}}
+                <option value="Serbia">Serbia</option>
+                <option value="Russia">Russia</option>
+                <option value="Japan">Japan</option>
+                {{/selected}}
+            </select>
+        </div>
+
+        <div>
+            <p>Technologies:</p>
+            <ul class="technologies-list">
+                {{#each technologies}}
+                {{#checked (lookup ../item.technologies @key)}}
+                <li>
+                    <label>
+                        <input type="checkbox" name="technologies[]" value="{{this}}" />
+                        <span class="checkbox">{{this}}</span>
+                    </label>
+                </li>
+                {{/checked}}
+                {{/each}}
+            </ul>
+        </div>
+
+        <div class="input-field">
+            <button type="submit" class="btn-large waves-effect waves-light submit-btn">Submit</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,65 @@
+<div class="header">
+    <div class="container">
+        <nav>
+            {{#if LoggedIn }}
+            <div class="nav-wrapper">
+                <a class="btn btn-primary btn-lg active indigo darken-1 hide-on-med-and-down" href="/admin">Back to
+                    Admin</a>
+                <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a class="btn btn-primary btn-lg active" href="/logout">Logout</a></li>
+                </ul>
+                <ul id="nav-mobile" class="sidenav">
+                    <div>
+                        <li><a class="btn btn-primary btn-lg active indigo darken-1" href="/admin">Back to Admin</a>
+                        </li>
+                    </div>
+                    <div>
+                        <li><a class="btn btn-primary btn-lg active" href="/logout">Logout</a></li>
+                    </div>
+                </ul>
+            </div>
+
+            {{else if user}}
+            <div class="nav-wrapper">
+                <a class="btn btn-primary btn-lg active hide-on-med-and-down indigo darken-1" href="/">See all jobs</a>
+                <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><span class="user">{{user.firstName}} {{user.lastName}}</span></li>
+                    <li><a class="btn btn-primary btn-lg active" href="/logout">Logout</a></li>
+                </ul>
+                <ul id="nav-mobile" class="sidenav">
+                    <div>
+                        <li><a class="btn btn-primary btn-lg active indigo darken-1" href="/">See all jobs</a></li>
+                    </div>
+                    <div>
+                        <li class="center-align"><span class="user">{{user.firstName}} {{user.lastName}}</span></li>
+                        <li><a class="btn btn-primary btn-lg active" href="/logout">Logout</a></li>
+                    </div>
+                </ul>
+            </div>
+
+            {{else}}
+            <div class="nav-wrapper">
+                <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <a class="btn btn-primary btn-lg active hide-on-med-and-down" href="/">Home</a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a class="btn btn-primary btn-lg active" href="/login">Login</a></li>
+                    <li><a class="btn btn-primary btn-lg active" href="/register">Register</a></li>
+                </ul>
+                <ul id="nav-mobile" class="sidenav">
+                    <div>
+                        <li><a class="btn btn-primary btn-lg active indigo darken-1" href="/">Home</a></li>
+                    </div>
+                    <div>
+                        <li><a class="btn btn-primary btn-lg active" href="/login">Login</a></li>
+                        <li><a class="btn btn-primary btn-lg active" href="/register">Register</a></li>
+                    </div>
+                </ul>
+            </div>
+
+            {{/if}}
+        </nav>
+
+    </div>
+</div>
