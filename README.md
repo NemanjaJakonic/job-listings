@@ -1,4 +1,4 @@
-# Express App with Handlebars template engine, MongoDB, Jsonwebtoken authentification, and Cloudinary for uploading images
+## Express App with Handlebars template engine, MongoDB, Jsonwebtoken authentification, and Cloudinary for uploading images
 
 Frontend design is taken from one of Frontend Mentor challenges
 
