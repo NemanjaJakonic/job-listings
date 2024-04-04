@@ -49,18 +49,17 @@ app.set("view engine", "hbs");
 
 const expressHbs = hbs.create({});
 
-expressHbs.handlebars.registerHelper('selected', function(selected, options) {
-  return options.fn(this).replace(
-      new RegExp(' value=\"' + selected + '\"'),
-      '$& selected="selected"');
+expressHbs.handlebars.registerHelper("selected", function (selected, options) {
+  return options
+    .fn(this)
+    .replace(new RegExp(' value="' + selected + '"'), '$& selected="selected"');
 });
 
-expressHbs.handlebars.registerHelper('checked', function(checked, options) {
-  return options.fn(this).replace(
-      new RegExp(' value=\"' + checked + '\"'),
-      '$& checked="checked"');
+expressHbs.handlebars.registerHelper("checked", function (checked, options) {
+  return options
+    .fn(this)
+    .replace(new RegExp(' value="' + checked + '"'), '$& checked="checked"');
 });
-
 
 app.use(morgan("dev"));
 app.use(cors());

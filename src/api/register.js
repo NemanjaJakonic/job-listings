@@ -2,15 +2,25 @@ const express = require("express");
 
 const router = express.Router();
 
-const monk = require("monk");
+//const monk = require("monk");
 
 const Joi = require("joi");
 
 const bcrypt = require("bcryptjs");
 
-const db = monk(process.env.MONGO_URI);
+// const db = monk(process.env.MONGO_URI);
 
-const users = db.get("users");
+// const users = db.get("users");
+
+const { connectDB } = require("../db");
+
+connectDB()
+  .then(({ jobs, users }) => {
+    // console.log(jobs);
+    // console.log(users);
+  })
+  .catch(console.error);
+// .finally(() => client.close());
 
 const schema = Joi.object({
   firstName: Joi.string().trim().alphanum().min(3).max(15).required(),
@@ -23,15 +33,15 @@ const schema = Joi.object({
 router.get("/", async (req, res, next) => {
   try {
     const items = await users.find({});
-    const token = req.cookies.jwt
+    const token = req.cookies.jwt;
     if (token) {
-      res.redirect('/admin')
+      res.redirect("/admin");
     } else {
       res.render("register", {
         items,
-        bademail: req.flash('existing_email'),
-        badpassword: req.flash('mismatch_passwords'),
-        message: req.flash('error')
+        bademail: req.flash("existing_email"),
+        badpassword: req.flash("mismatch_passwords"),
+        message: req.flash("error"),
       });
     }
   } catch (error) {
@@ -46,13 +56,13 @@ router.post("/", async (req, res, next) => {
       email: req.body.email,
     });
     if (emailExists) {
-      req.flash('existing_email', 'Email already exists!')
-      res.redirect("/register")
+      req.flash("existing_email", "Email already exists!");
+      res.redirect("/register");
     }
 
     if (req.body.password !== req.body.confirmPassword) {
-      req.flash('mismatch_passwords', 'Passwords dont match!')
-      res.redirect("/register")
+      req.flash("mismatch_passwords", "Passwords dont match!");
+      res.redirect("/register");
     }
 
     await schema.validateAsync({
@@ -71,17 +81,16 @@ router.post("/", async (req, res, next) => {
       lastName: req.body.lastName,
       email: req.body.email,
       password: hashPassword,
-    }
+    };
 
     const inserted = await users.insert(value);
     if (inserted) {
-      req.flash('successfull_register', 'Successfully registered!')
-      res.redirect('/login');
+      req.flash("successfull_register", "Successfully registered!");
+      res.redirect("/login");
     }
-
   } catch (error) {
-    req.flash('error', error.message)
-    res.redirect("/register")
+    req.flash("error", error.message);
+    res.redirect("/register");
     next();
   }
 });
